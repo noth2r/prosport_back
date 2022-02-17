@@ -28,8 +28,8 @@ class Mail {
                         <a href=${link}>${link}</a>
                     `
             })
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 }

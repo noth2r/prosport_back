@@ -1,6 +1,6 @@
 "use strict"
 
-const db = require("../db")
+const db = require("@models/db")
 const SaveFile = require("save-file")
 
 class Operations {
@@ -13,8 +13,8 @@ class Operations {
             `)
 
             return res
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -27,8 +27,8 @@ class Operations {
             `)
 
             return res
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -64,16 +64,15 @@ class Operations {
             `)
 
             if (img) {
-                const folder = process.env.PRODUCTS_FOLDER
                 const { name, data } = img
-                const path = folder + name
+                const path = `@/media/images/${name}`
 
                 SaveFile(data, path)
             }
 
             return res
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 }

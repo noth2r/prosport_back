@@ -13,7 +13,7 @@ class Excel {
             
             return xlData
         } catch(e) {
-            throw new Error(e)
+            throw new Error(error.msg)
         }
     }
 }

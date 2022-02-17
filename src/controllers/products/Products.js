@@ -1,4 +1,4 @@
-const ProductsService = require("../../models/products/")
+const ProductsService = require("@models/products/")
 class Products {
     async get(req, res) {
         try {
@@ -7,7 +7,7 @@ class Products {
     
             res.json(products)
         } catch(e) {
-            throw new Error(e)
+            throw new Error(error.msg)
         }
     }
 
@@ -20,8 +20,8 @@ class Products {
             const products = await ProductsService.search(userQuery, from)
             
             res.json(products)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -47,8 +47,8 @@ class Products {
             const products = await ProductsService.getProductsById( productsID )
 
             res.json(products)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -58,7 +58,7 @@ class Products {
 
             return orderId
         } catch ( error ) {
-            throw new Error(error)
+            throw new Error(error.msg)
         }
     }
 }

@@ -1,5 +1,5 @@
-const Tinkoff         = require('../../models/tinkoff')
-const { products }    = require("../products")
+const Tinkoff         = require('@models/tinkoff')
+const { products }    = require("@controllers/products")
 
 class TinkoffController {
     static Init( req, res ) {

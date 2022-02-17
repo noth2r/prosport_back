@@ -1,7 +1,7 @@
 const router = require("express-promise-router")()
-const { Admin, ExcelAsDBTables } = require("../controllers/admin")
+const { Admin, ExcelAsDBTables } = require("@controllers/admin")
 const { body } = require("express-validator")
-const { AuthMiddleware } = require("../middlewares")
+const { AuthMiddleware } = require("@middlewares")
 
 router.route("/login")
     .post(

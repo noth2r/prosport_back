@@ -1,8 +1,8 @@
 "use strict"
 
-const db = require("../db")
+const db = require("@models/db")
 const jwt = require("jsonwebtoken")
-const { AdminDto } = require("../../dto")
+const { AdminDto } = require("@dto")
 
 class Token {
     static async saveToken(userId, refreshToken) {
@@ -27,8 +27,8 @@ class Token {
             `)
 
             return token
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -94,8 +94,8 @@ class Token {
             `)
 
             return tokenData
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 }

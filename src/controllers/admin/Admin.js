@@ -1,7 +1,6 @@
 "use strict"
 
-const { Authentication, Operations } = require("../../models/admin")
-const { validationResult } = require("express-validator")
+const { Authentication, Operations } = require("@models/admin")
 
 class Admin {
     async login(req, res, next) {
@@ -20,8 +19,8 @@ class Admin {
             )
 
             return res.json(data)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -33,8 +32,8 @@ class Admin {
             res.clearCookie("refreshToken")
 
             return res.json(token)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -45,8 +44,8 @@ class Admin {
             const data = Authentication.validateToken(accessToken)
 
             res.json(data)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -56,8 +55,8 @@ class Admin {
             const data = await Operations.removeProduct(id)
 
             res.json(data)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -67,8 +66,8 @@ class Admin {
             const data = await Operations.removeProductImg(id)
 
             res.json(data)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -79,8 +78,8 @@ class Admin {
             const result = await Operations.updateProduct(body, img)
 
             res.json(result)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -90,8 +89,8 @@ class Admin {
             await Authentication.activateByLink(activationLink)
 
             return res.redirect(process.env.CLIENT_URL)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -111,8 +110,8 @@ class Admin {
             )
 
             return res.json(userData)
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 }

@@ -1,7 +1,7 @@
 "use strict"
 
-const db = require("../db")
-const FromToBinary = require("../from_to_binary")
+const db = require("@models/db")
+const FromToBinary = require("@models/from_to_binary")
 const tableName = db.tables.products.name
 
 class ProductsService {
@@ -17,8 +17,8 @@ class ProductsService {
             const encodedProducts = FromToBinary.EncodeUTF8(products)
 
             return encodedProducts
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -63,8 +63,8 @@ class ProductsService {
             const products = await db.query(searchQuery)
 
             return products
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -76,7 +76,7 @@ class ProductsService {
             `
 
             return await db.query(query)
-        } catch (e) {
+        } catch (error) {
             throw new Error()
         }
     }

@@ -62,8 +62,8 @@ class ExtractImages {
             // const pathsForPictures = this._extractImages(zip, zipEntries)
 
             // return pathsForPictures
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 }

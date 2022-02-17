@@ -1,4 +1,4 @@
-const Token = require("../models/token")
+const Token = require("@models/token")
 
 module.exports = function (req, res) {
     try {
@@ -14,7 +14,7 @@ module.exports = function (req, res) {
         }
 
         req.user = userData
-    } catch (e) {
-        throw new Error(e)
+    } catch (error) {
+        throw new Error(error.msg)
     }
 }

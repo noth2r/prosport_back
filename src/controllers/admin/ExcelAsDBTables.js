@@ -1,8 +1,8 @@
 "use strict"
 
-const db = require("../../models/db")
+const db = require("@models/db")
 const fsPromises = require("fs.promises")
-const Excel = require("../../models/excel")
+const Excel = require("@models/excel")
 const SaveFile = require("save-file")
 
 /* 
@@ -87,8 +87,8 @@ class ExcelAsDBTables {
                 ` ; `
 
             return query
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -119,8 +119,8 @@ class ExcelAsDBTables {
             await db.query(insertQuery)
             // Remove duplicates
             await this._removeDuplicates()
-        } catch (e) {
-            throw new Error(e)
+        } catch (error) {
+            throw new Error(error.msg)
         }
     }
 
@@ -135,11 +135,11 @@ class ExcelAsDBTables {
             await fsPromises.unlink(file.name)
 
             res.send("Success")
-        } catch (e) {
+        } catch (error) {
             res
                 .status(400)
                 .send("Failed")
-            throw new Error(e)
+            throw new Error(error.msg)
         }
     }
 }

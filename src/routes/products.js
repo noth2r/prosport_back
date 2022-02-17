@@ -1,5 +1,5 @@
 const router = require('express-promise-router')()
-const { products } = require(`../controllers/products`)
+const { products } = require(`@controllers/products`)
 
 router.route('/').get(products.get.bind(products))
 router.route('/get_products_by_category').get(products.getProductsByCategory.bind(products))

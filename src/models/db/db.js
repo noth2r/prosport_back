@@ -33,20 +33,16 @@ class db {
     };
   }
 
-  query(query) {
-    let response = null
-    let connection = mysql.createConnection(this.dbConfig)
+  async query(query) {
+    try {
+      const connection = mysql.createConnection(this.dbConfig).promise()
+      const [ rows, fields ] = await connection.query(query)
+      await connection.end()
 
-    connection
-        .promise()
-        .query(query)
-        .then(([ rows ]) => response = rows)
-        .then(connection.end())
-        .catch(error => {
-            throw new Error(error)
-        })
-
-    return response;
+      return rows
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 }
 
